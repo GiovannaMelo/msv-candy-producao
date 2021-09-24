@@ -18,25 +18,22 @@ public class EstoqueProdutoMapper {
      return new EstoqueProdutoDto(estoqueProduto.getId(), estoqueProduto.getEstoque(), estoqueProduto.getProduto(), estoqueProduto.getGramasUtilizadas());
     }
 
-    public List<IngredientesDto> converterEntidadeParaRequestDto(List<EstoqueProdutoRequestDto> listaEstoqueProdutoRequestDto){
-
-        
-
-        return new EstoqueProdutoRequestDto(estoqueProduto.getId(), estoqueProduto.getProduto().getIdProduto(), );
+    public EstoqueProdutoRequestDto converterEntidadeParaRequestDto(EstoqueProduto estoqueProduto){
+        return new EstoqueProdutoRequestDto(estoqueProduto.getId(), estoqueProduto.getEstoque().getIdEstoque(), estoqueProduto.getProduto().getIdProduto(), estoqueProduto.getGramasUtilizadas());
     }
 
     public EstoqueProduto converterDtoParaEntidade(EstoqueProdutoDto estoqueProdutoDto){
       return new EstoqueProduto(estoqueProdutoDto.getId(), estoqueProdutoDto.getEstoque(), estoqueProdutoDto.getProduto(), estoqueProdutoDto.getGramasUtilizadas());
     }
 
-    public EstoqueProduto converterRequestParaEntidade(EstoqueProdutoRequestDto requestDto, IngredientesDto ingredientesDto){
+    public EstoqueProduto converterRequestParaEntidade(EstoqueProdutoRequestDto requestDto){
         EstoqueProduto estoqueProduto = new EstoqueProduto();
         Produto produto = new Produto();
         Estoque estoque = new Estoque();
         estoqueProduto.setId(requestDto.getId());
-        estoqueProduto.setGramasUtilizadas(ingredientesDto.getGramasUtilizadas());
+        estoqueProduto.setGramasUtilizadas(requestDto.getGramasUtilizadas());
         produto.setIdProduto(requestDto.getIdProduto());
-        estoque.setIdEstoque(ingredientesDto.getIdEstoque());
+        estoque.setIdEstoque(requestDto.getIdEstoque());
         estoqueProduto.setEstoque(estoque);
         estoqueProduto.setProduto(produto);
         return estoqueProduto;

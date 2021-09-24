@@ -2,6 +2,7 @@ package br.com.candyhouse.msvcandyproducao.service;
 
 import br.com.candyhouse.msvcandyproducao.dto.EstoqueProdutoDto;
 import br.com.candyhouse.msvcandyproducao.dto.EstoqueProdutoRequestDto;
+import br.com.candyhouse.msvcandyproducao.dto.IngredientesDto;
 import br.com.candyhouse.msvcandyproducao.entity.Estoque;
 import br.com.candyhouse.msvcandyproducao.entity.EstoqueProduto;
 import br.com.candyhouse.msvcandyproducao.mapper.EstoqueProdutoMapper;
@@ -33,7 +34,7 @@ public class EstoqueProdutoService {
 
     public EstoqueProdutoRequestDto adicionarEstoqueProduto(EstoqueProdutoRequestDto requestDto){
         EstoqueProduto estoqueProduto = estoqueProdutoMapper.converterRequestParaEntidade(requestDto);
-        Estoque estoque = estoqueRepository.findById(requestDto).orElse(null);
+        Estoque estoque = estoqueRepository.findById(requestDto.getIdEstoque()).orElse(null);
 
         if(estoque != null) {
             estoque.setTotalGramas(estoque.getTotalGramas() - estoqueProduto.getGramasUtilizadas());

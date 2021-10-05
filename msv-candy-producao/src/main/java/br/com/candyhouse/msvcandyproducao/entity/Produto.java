@@ -9,9 +9,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "Produto")
@@ -42,12 +40,9 @@ public class Produto {
     private Double valorFabricacao;
 
     @Column(name = "valor_vendido")
-    private Double valorVendido;
+    private Double valorVenda;
 
     @OneToMany(mappedBy = "produto")
-    Set<EstoqueProduto> estoque = new HashSet<>();
+    List<EstoqueProduto> estoque = new ArrayList<>();
 
-    public Produto(Integer idProduto, String nome, LocalDate dataFabricacao, Integer qtdFabricada, Integer qtdDisponivel, Double valorFabricacao, Double valorVendido) {
-        this.idProduto = idProduto;
-    }
 }

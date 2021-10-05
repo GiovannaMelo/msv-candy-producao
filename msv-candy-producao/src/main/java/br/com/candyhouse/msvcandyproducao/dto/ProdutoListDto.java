@@ -6,23 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProdutosDisponiveisDto {
-
+public class ProdutoListDto {
     private Integer idProduto;
 
     private String nome;
 
     private LocalDate dataFabricacao;
 
+    private Integer qtdFabricada;
+
     private Integer qtdDisponivel;
 
+    private Double valorFabricacao;
+
     private Double valorVenda;
-
 }
-

@@ -1,8 +1,8 @@
 package br.com.candyhouse.msvcandyproducao.controller;
 
 import br.com.candyhouse.msvcandyproducao.dto.EstoqueProdutoDto;
+import br.com.candyhouse.msvcandyproducao.dto.EstoqueProdutoListDto;
 import br.com.candyhouse.msvcandyproducao.dto.EstoqueProdutoRequestDto;
-import br.com.candyhouse.msvcandyproducao.entity.EstoqueProduto;
 import br.com.candyhouse.msvcandyproducao.repository.EstoqueProdutoRepository;
 import br.com.candyhouse.msvcandyproducao.service.EstoqueProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +23,17 @@ public class EstoqueProdutoController {
     private EstoqueProdutoRepository estoqueProdutoRepository;
 
     @GetMapping
-    public ResponseEntity<List<EstoqueProdutoDto>> listarEstoqueProdutos(){
+    public ResponseEntity<List<EstoqueProdutoListDto>> listarEstoqueProdutos(){
         return ResponseEntity.ok(estoqueProdutoService.listarEstoqueProdutos());
     }
 
     @PostMapping
-    public ResponseEntity<EstoqueProdutoRequestDto> adicionarEstoqueProduto (@RequestBody EstoqueProdutoRequestDto requestDto){
+    public ResponseEntity<String> adicionarEstoqueProduto (@RequestBody EstoqueProdutoRequestDto requestDto) throws Exception {
         return ResponseEntity.ok(estoqueProdutoService.adicionarEstoqueProduto(requestDto));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EstoqueProdutoDto> buscarIdEstoqueProduto(@PathVariable Integer id){
+    public ResponseEntity<EstoqueProdutoListDto> buscarIdEstoqueProduto(@PathVariable Integer id){
         return ResponseEntity.ok(estoqueProdutoService.buscarIdEstoqueProduto(id));
     }
 

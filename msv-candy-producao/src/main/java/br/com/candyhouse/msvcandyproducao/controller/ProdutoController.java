@@ -1,8 +1,6 @@
 package br.com.candyhouse.msvcandyproducao.controller;
 
-import br.com.candyhouse.msvcandyproducao.dto.ProdutoDto;
-import br.com.candyhouse.msvcandyproducao.dto.ProdutoResponseDto;
-import br.com.candyhouse.msvcandyproducao.dto.ProdutosDisponiveisDto;
+import br.com.candyhouse.msvcandyproducao.dto.*;
 import br.com.candyhouse.msvcandyproducao.entity.Produto;
 import br.com.candyhouse.msvcandyproducao.repository.ProdutoRepository;
 import br.com.candyhouse.msvcandyproducao.service.ProdutoService;
@@ -19,8 +17,10 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
+    private ProdutoRepository produtoRepository;
+
     @GetMapping
-    public ResponseEntity<List<ProdutoDto>> listarProdutos(){
+    public ResponseEntity<List<ProdutoResponseEstoqueDto>> listarProdutos(){
         return ResponseEntity.ok(produtoService.listarProdutos());
     }
 
@@ -35,7 +35,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProdutoDto> buscarIdProduto(@PathVariable Integer id){
+    public ResponseEntity<ProdutoResponseListDto> buscarIdProduto(@PathVariable Integer id){
         return ResponseEntity.ok(produtoService.buscarIdProduto(id));
     }
 
@@ -48,5 +48,10 @@ public class ProdutoController {
     @PutMapping("{id}")
     public ResponseEntity<ProdutoDto> atualizarProduto(@PathVariable Integer id, @RequestBody ProdutoDto produtoDto){
         return ResponseEntity.ok(produtoService.atualizarProduto(id, produtoDto));
+    }
+
+    @PutMapping("/{id}/qtd/{qtdAtual}")
+    public ResponseEntity<String> atualizarQtdProduto(@PathVariable Integer id, @PathVariable Integer qtdAtual) throws Exception {
+        return ResponseEntity.ok(produtoService.atualizarQtdProduto(id, qtdAtual));
     }
 }

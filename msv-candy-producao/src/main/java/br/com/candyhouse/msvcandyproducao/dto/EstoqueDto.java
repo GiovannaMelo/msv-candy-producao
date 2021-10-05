@@ -1,10 +1,13 @@
 package br.com.candyhouse.msvcandyproducao.dto;
 
 import br.com.candyhouse.msvcandyproducao.entity.EstoqueProduto;
+import jdk.jfr.Period;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.boot.registry.classloading.spi.ClassLoaderService;
+import org.hibernate.jdbc.Work;
 
 import javax.persistence.Column;
 import java.time.LocalDate;
@@ -31,5 +34,5 @@ public class EstoqueDto {
     private Integer quantidade;
 
     private Double valorCompra;
-
+    
 }

@@ -25,6 +25,6 @@ public class ProdutoResponseDto {
 
     private Double valorFabricacao;
 
-    private Double valorVendido;
+    private Double valorVenda;
 
 }

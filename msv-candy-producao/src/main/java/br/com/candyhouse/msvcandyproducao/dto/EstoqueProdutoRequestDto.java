@@ -17,12 +17,8 @@ public class EstoqueProdutoRequestDto {
 
     private Integer id;
 
-    private Integer idEstoque;
-
     private Integer idProduto;
 
-    private Double gramasUtilizadas;
-
-   // List<IngredientesDto> ingredientesDtoList;
+    List<IngredientesDto> ingredientes;
 
 }

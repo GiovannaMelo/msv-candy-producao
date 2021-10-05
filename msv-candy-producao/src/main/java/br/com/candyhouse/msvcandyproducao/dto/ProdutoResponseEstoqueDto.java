@@ -6,13 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProdutosDisponiveisDto {
+public class ProdutoResponseEstoqueDto {
 
     private Integer idProduto;
 
@@ -20,9 +20,14 @@ public class ProdutosDisponiveisDto {
 
     private LocalDate dataFabricacao;
 
+    private Integer qtdFabricada;
+
     private Integer qtdDisponivel;
+
+    private Double valorFabricacao;
 
     private Double valorVenda;
 
-}
+    List<EstoqueProdutoResponseDto> estoqueProdutos;
 
+}

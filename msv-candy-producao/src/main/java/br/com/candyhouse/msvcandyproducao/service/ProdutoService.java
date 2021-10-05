@@ -1,8 +1,6 @@
 package br.com.candyhouse.msvcandyproducao.service;
 
-import br.com.candyhouse.msvcandyproducao.dto.ProdutoDto;
-import br.com.candyhouse.msvcandyproducao.dto.ProdutoResponseDto;
-import br.com.candyhouse.msvcandyproducao.dto.ProdutosDisponiveisDto;
+import br.com.candyhouse.msvcandyproducao.dto.*;
 import br.com.candyhouse.msvcandyproducao.entity.Produto;
 import br.com.candyhouse.msvcandyproducao.mapper.ProdutoMapper;
 import br.com.candyhouse.msvcandyproducao.repository.ProdutoRepository;
@@ -20,7 +18,7 @@ public class ProdutoService {
     @Autowired
     private ProdutoMapper produtoMapper;
 
-    public List<ProdutoDto> listarProdutos(){
+    public List<ProdutoResponseEstoqueDto> listarProdutos(){
         return produtoMapper.converterListaEntidadeParaDto( produtoRepository.findAll());
     }
 
@@ -32,8 +30,8 @@ public class ProdutoService {
         return produtoMapper.converterEntidadeParaResponseDto(produtoRepository.save(produto));
     }
 
-    public ProdutoDto buscarIdProduto(Integer id){
-        return produtoMapper.converterEntidadeParaDto(produtoRepository.findById(id).get());
+    public ProdutoResponseListDto buscarIdProduto(Integer id){
+        return produtoMapper.converterEntidadeparaResponseDto(produtoRepository.findById(id).get());
     }
 
     public void deletarProduto(Integer id){
@@ -41,9 +39,23 @@ public class ProdutoService {
     }
 
     public ProdutoDto atualizarProduto(Integer id, ProdutoDto produtoDto){
-        Produto produtoAtual = produtoMapper.converterDtoParaEntidade(produtoDto);
-        produtoAtual.setIdProduto(id);
+        Produto byId = produtoRepository.findById(id).get();
+        byId.setNome(produtoDto.getNome());
+        byId.setDataFabricacao(produtoDto.getDataFabricacao());
+        byId.setValorVenda(produtoDto.getValorVenda());
+        byId.setValorFabricacao(produtoDto.getValorFabricacao());
+        byId.setQtdFabricada(produtoDto.getQtdFabricada());
+        byId.setQtdDisponivel(produtoDto.getQtdDisponivel());
+        return produtoMapper.converterEntidadeParaDto(produtoRepository.save(byId));
+    }
 
-        return produtoMapper.converterEntidadeParaDto(produtoRepository.save(produtoAtual));
+    public String atualizarQtdProduto (Integer id, Integer qtdAtual) throws Exception {
+        Produto byId = produtoRepository.findById(id).get();
+        if (qtdAtual == null){
+            throw new Exception("Quantidade atual não pode ser nula");
+        }
+        byId.setQtdDisponivel(qtdAtual);
+        produtoRepository.save(byId);
+        return ("Quantidade de produtos disponives atualizada");
     }
 }

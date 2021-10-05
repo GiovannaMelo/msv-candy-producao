@@ -1,5 +1,7 @@
 package br.com.candyhouse.msvcandyproducao.entity;
 
+import br.com.candyhouse.msvcandyproducao.dto.EstoqueDto;
+import br.com.candyhouse.msvcandyproducao.dto.ProdutoDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,4 +35,5 @@ public class EstoqueProduto {
 
     @Column(name = "gramas_utilizadas")
     private Double gramasUtilizadas;
+
 }

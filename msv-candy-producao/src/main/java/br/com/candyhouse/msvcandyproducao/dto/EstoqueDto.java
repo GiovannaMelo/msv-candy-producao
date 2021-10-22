@@ -1,5 +1,6 @@
 package br.com.candyhouse.msvcandyproducao.dto;
 
+import br.com.candyhouse.msvcandyproducao.entity.Confeitaria;
 import br.com.candyhouse.msvcandyproducao.entity.EstoqueProduto;
 import jdk.jfr.Period;
 import lombok.AllArgsConstructor;
@@ -34,5 +35,6 @@ public class EstoqueDto {
     private Integer quantidade;
 
     private Double valorCompra;
-    
+
+    private Confeitaria confeitaria;
 }

@@ -1,5 +1,6 @@
 package br.com.candyhouse.msvcandyproducao.dto;
 
+import br.com.candyhouse.msvcandyproducao.entity.Confeitaria;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,6 +29,8 @@ public class ProdutoDto {
     private Double valorFabricacao;
 
     private Double valorVenda;
+
+    private Confeitaria confeitaria;
 
     List<EstoqueProdutoDto> estoqueProdutos;
 

@@ -44,6 +44,10 @@ public class Estoque {
     @Column(name = "valor_compra")
     private Double valorCompra;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_confeitaria")
+    private Confeitaria confeitaria;
+
     @JsonIgnore
     @OneToMany(mappedBy = "estoque")
     Set<EstoqueProduto> produto = new HashSet<>();

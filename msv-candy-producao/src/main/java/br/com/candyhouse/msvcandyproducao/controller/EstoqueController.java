@@ -31,6 +31,11 @@ public class EstoqueController {
         return ResponseEntity.ok(estoqueService.buscarIdEstoque(id));
     }
 
+    @GetMapping("/{idConfeitaria}")
+    public ResponseEntity<List<EstoqueDto>> listarEstoqueConfeitaria (@PathVariable Integer id){
+        return ResponseEntity.ok(estoqueService.listarEstoqueConfeitaria(id));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarEstoque(@PathVariable Integer id){
         estoqueService.deletarEstoque(id);

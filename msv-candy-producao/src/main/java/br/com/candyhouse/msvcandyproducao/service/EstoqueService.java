@@ -42,4 +42,8 @@ public class EstoqueService {
 
         return estoqueMapper.converterEntidadeParaDto(estoqueRepository.save(estoqueAtual));
     }
+
+    public List<EstoqueDto> listarEstoqueConfeitaria(Integer id) {
+        return estoqueMapper.converterListaEntidadeParaDto(estoqueRepository.findAllByConfeitaria(id));
+    }
 }

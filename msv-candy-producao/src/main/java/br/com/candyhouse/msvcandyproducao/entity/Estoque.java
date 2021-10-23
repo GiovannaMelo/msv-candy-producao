@@ -55,4 +55,19 @@ public class Estoque {
     public Estoque(Integer idEstoque) {
         this.idEstoque = idEstoque;
     }
+
+    @Override
+    public String toString() {
+        return "Estoque{" +
+                "idEstoque=" + idEstoque +
+                ", nome='" + nome + '\'' +
+                ", dataValidade=" + dataValidade +
+                ", gramas=" + gramas +
+                ", totalGramas=" + totalGramas +
+                ", quantidade=" + quantidade +
+                ", valorCompra=" + valorCompra +
+                ", confeitaria=" + confeitaria +
+                ", produto=" + produto +
+                '}';
+    }
 }

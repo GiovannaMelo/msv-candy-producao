@@ -36,5 +36,5 @@ public class EstoqueDto {
 
     private Double valorCompra;
 
-    private Confeitaria confeitaria;
+    private Integer idConfeitaria;
 }

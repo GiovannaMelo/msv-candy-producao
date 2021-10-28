@@ -42,10 +42,6 @@ public class Produto {
     @Column(name = "valor_vendido")
     private Double valorVenda;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_confeitaria")
-    private Confeitaria confeitaria;
-
     @OneToMany(mappedBy = "produto")
     List<EstoqueProduto> estoque = new ArrayList<>();
 

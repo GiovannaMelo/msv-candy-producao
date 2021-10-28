@@ -40,8 +40,8 @@ public class EstoqueProdutoService {
             for (IngredientesDto dto : requestDto.getIngredientes()) {
                 EstoqueProdutoDto estoqueProdutoDto = new EstoqueProdutoDto(
                         requestDto.getId(),
-                        new EstoqueDto(dto.getIdEstoque(), null, null, null, null, null, null, null),
-                        new ProdutoDto(requestDto.getIdProduto(), null, null, null, null, null, null, null, new ArrayList<>()),
+                        new EstoqueDto(dto.getIdEstoque(), null, null, null, null, null, null),
+                        new ProdutoDto(requestDto.getIdProduto(), null,null, null, null, null, null, new ArrayList<>()),
                         dto.getGramasUtilizadas());
                 EstoqueProduto estoqueProduto = estoqueProdutoMapper.converterRequestParaEntidade(estoqueProdutoDto);
                 Estoque estoque = estoqueRepository.findById(estoqueProduto.getEstoque().getIdEstoque()).orElse(null);

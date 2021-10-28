@@ -62,7 +62,6 @@ public class ProdutoMapper {
                 produto.getQtdDisponivel(),
                 produto.getValorFabricacao(),
                 produto.getValorVenda(),
-                produto.getConfeitaria(),
                 listaEstoqueProdutos);
 
         return produtoDto;
@@ -84,7 +83,7 @@ public class ProdutoMapper {
             estoqueProduto.setGramasUtilizadas(valor.getGramasUtilizadas());
             listaEstoqueProdutosDto.add(estoqueProduto);
         }
-        return new Produto(produtoDto.getIdProduto(), produtoDto.getNome(), produtoDto.getDataFabricacao(), produtoDto.getQtdFabricada(), produtoDto.getQtdDisponivel(), produtoDto.getValorFabricacao(), produtoDto.getValorVenda(), produtoDto.getConfeitaria(), listaEstoqueProdutosDto);
+        return new Produto(produtoDto.getIdProduto(), produtoDto.getNome(), produtoDto.getDataFabricacao(), produtoDto.getQtdFabricada(), produtoDto.getQtdDisponivel(), produtoDto.getValorFabricacao(), produtoDto.getValorVenda(), listaEstoqueProdutosDto);
     }
 
     public List<ProdutoResponseEstoqueDto> converterListaEntidadeParaDto(List<Produto> listaProdutos){

@@ -30,8 +30,6 @@ public class ProdutoDto {
 
     private Double valorVenda;
 
-    private Confeitaria confeitaria;
-
     List<EstoqueProdutoDto> estoqueProdutos;
 
 

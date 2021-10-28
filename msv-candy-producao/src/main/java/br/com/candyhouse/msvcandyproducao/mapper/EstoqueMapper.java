@@ -20,14 +20,11 @@ public class EstoqueMapper {
                 estoque.getGramas(),
                 estoque.getTotalGramas(),
                 estoque.getQuantidade(),
-                estoque.getValorCompra(),
-                1
+                estoque.getValorCompra()
         );
     }
     public Estoque converterDtoParaEntidade (EstoqueDto estoqueDto){
         Estoque estoque = new Estoque();
-        Confeitaria confeitaria = new Confeitaria();
-        confeitaria.setIdConfeitaria(estoqueDto.getIdConfeitaria());
         estoque.setIdEstoque(estoqueDto.getIdEstoque());
         estoque.setNome(estoqueDto.getNome());
         estoque.setDataValidade(estoqueDto.getDataValidade());
@@ -35,7 +32,6 @@ public class EstoqueMapper {
         estoque.setTotalGramas(estoqueDto.getTotalGramas());
         estoque.setQuantidade(estoqueDto.getQuantidade());
         estoque.setValorCompra(estoqueDto.getValorCompra());
-        estoque.setConfeitaria(confeitaria);
         return estoque;
     }
 

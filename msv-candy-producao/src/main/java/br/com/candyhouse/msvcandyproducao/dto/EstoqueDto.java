@@ -35,6 +35,4 @@ public class EstoqueDto {
     private Integer quantidade;
 
     private Double valorCompra;
-
-    private Integer idConfeitaria;
 }

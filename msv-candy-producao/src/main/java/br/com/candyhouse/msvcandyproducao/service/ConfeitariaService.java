@@ -8,6 +8,8 @@ import br.com.candyhouse.msvcandyproducao.repository.ConfeitariaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ConfeitariaService {
 
@@ -17,15 +19,16 @@ public class ConfeitariaService {
     @Autowired
     ConfeitariaMapper confeitariaMapper;
 
+    public List<ConfeitariaDto> listarConfeitaria() {
+        return confeitariaMapper.converterListaConfeitariaEntidadeParaDto(confeitariaRepository.findAll());
+    }
+
     public ConfeitariaDto cadastrarConfeitaria(ConfeitariaDto confeitariaDto) {
         return confeitariaMapper.converterEntidadeParaDto(confeitariaRepository.save(confeitariaMapper.converterDtoParaEntidade(confeitariaDto)));
     }
 
     public Integer loginConfeitaria(ConfeitariaLoginDto confeitariaLoginDto){
         Confeitaria confeitaria = confeitariaRepository.loginConfeitaria(confeitariaLoginDto.getUsuario(), confeitariaLoginDto.getSenha()).orElse(null);
-        if (confeitaria == null){
-            return 0;
-        }
         return confeitariaMapper.converterEntidadeParaDto(confeitaria).getIdConfeitaria();
     }
 }
